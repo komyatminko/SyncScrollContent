@@ -1,6 +1,6 @@
-<div class="d-flex vh-100">
+<div class="row">
   <!-- Left Sidebar -->
-  <nav #leftSidebar class="bg-light border-end p-3 overflow-auto" style="width: 250px; max-height: 100vh;">
+  <nav #leftSidebar class="col-4 bg-light border-end p-3 overflow-auto" style="width: 250px; max-height: 100vh;">
     <div *ngFor="let category of categories" class="mb-3">
       <h6 class="text-secondary">{{ category.name }}</h6>
       <ul class="list-group list-group-flush">
@@ -12,7 +12,7 @@
   </nav>
 
   <!-- Right Content -->
-  <div #rightContent class="flex-fill p-4 overflow-auto" style="max-height: 100vh;" (scroll)="syncLeftRightScroll()">
+  <div #rightContent class="col-8 flex-fill p-4 overflow-auto" style="max-height: 100vh;" (scroll)="syncLeftRightScroll()">
     <div *ngFor="let product of allProducts" [id]="product.id" class="mb-4 p-3 border rounded product">
       <h4>{{ product.name }}</h4>
       <p>{{ product.description }}</p>

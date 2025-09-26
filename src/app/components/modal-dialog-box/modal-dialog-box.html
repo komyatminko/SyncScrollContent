@@ -1,0 +1,36 @@
+<nz-modal [(nzVisible)]="isVisible" [nzWidth]="400" [nzTitle]="modalTitle" [nzOkText]="'Save'"
+    [nzOkDisabled]="modalForm.invalid" [nzOkDanger]="true" (nzOnCancel)="handleCancel()" (nzOnOk)="handleSave()"
+    [nzOkLoading]="isOkLoading">
+    <form nz-form nzLayout="vertical" [formGroup]="modalForm" *nzModalContent>
+        <!-- Name -->
+        <nz-form-item>
+            <nz-form-label [nzSpan]="24" nzRequired>{{modalName}}</nz-form-label>
+            <nz-form-control [nzSpan]="24">
+                <input nz-input formControlName="name" placeholder="Enter name" class="rounded" />
+                @if (modalForm.get('name')?.invalid && (modalForm.get('name')?.touched || modalForm.get('name')?.dirty))
+                {
+                <div class="error">
+                    <div nz-typography nzType="danger" class="error">
+                        Name is required
+                    </div>
+                </div>
+                }
+            </nz-form-control>
+        </nz-form-item>
+
+        <!-- Email -->
+        <nz-form-item>
+            <nz-form-label [nzSpan]="24" nzRequired>Description</nz-form-label>
+            <nz-form-control [nzSpan]="24">
+                <textarea nz-input rows="4" formControlName="description" placeholder="placeholder"
+                    class="rounded"></textarea>
+                @if (modalForm.get('description')?.invalid && (modalForm.get('description')?.touched ||
+                modalForm.get('description')?.dirty)) {
+                <div nz-typography nzType="danger" class="error">
+                    Description is required
+                </div>
+                }
+            </nz-form-control>
+        </nz-form-item>
+    </form>
+</nz-modal>

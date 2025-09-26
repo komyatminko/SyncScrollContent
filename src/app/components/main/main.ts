@@ -19,10 +19,10 @@ export class Main {
     {
       name: 'Category 1',
       products: [
-        { id: 'p1', name: 'Product 1', description: 'Description 1' },
+        { id: 'p1', name: 'Product 1', description: 'Description 1 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ' },
         { id: 'p2', name: 'Product 2', description: 'Description 2' },
         { id: 'p3', name: 'Product 3', description: 'Description 3' },
-        { id: 'p4', name: 'Product 4', description: 'Description 4' },
+        { id: 'p4', name: 'Product 4', description: 'Description 4 It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here, content here, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for lorem ipsum will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).' },
         { id: 'p5', name: 'Product 5', description: 'Description 5' }
       ]
     },
@@ -111,7 +111,7 @@ export class Main {
     console.log('Active product:', this.activeProduct);
 
     // if (currentActive === this.activeProduct) {
-      const leftItem = this.leftSidebar.nativeElement.querySelector(`li a[href="#"][id="${this.activeProduct}"]`);
+      const leftItem = this.leftSidebar.nativeElement.querySelector(`li a[id="${this.activeProduct}"]`);
       if (leftItem) {
         leftItem.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
