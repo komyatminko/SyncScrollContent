@@ -1,0 +1,23 @@
+<nz-date-picker [nzDisabledDate]="disabledStartDate" nzFormat="yyyy-MM-dd" [(ngModel)]="startValue"
+    nzPlaceHolder="Start"></nz-date-picker>
+<nz-date-picker #endDatePicker [nzDisabledDate]="disabledEndDate" nzFormat="yyyy-MM-dd" [(ngModel)]="endValue"
+    nzPlaceHolder="End"></nz-date-picker>
+
+
+
+<br>
+<br>
+
+
+<nz-upload [nzBeforeUpload]="beforeUpload">
+    <button nz-button>
+        <nz-icon nzType="upload" />
+        Upload only pdf
+    </button>
+</nz-upload>
+
+<br>
+<br>
+<nz-switch [(ngModel)]="switchValue" [nzControl]="true" (click)="clickSwitch()" [nzLoading]="loading"></nz-switch>
+
+

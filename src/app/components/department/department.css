@@ -1,0 +1,32 @@
+nz-select {
+    width: 200px !important;
+}
+
+.container {
+    margin: 30px 50px;
+}
+
+.shadow {
+    box-shadow: 0 4px 3px rgba(0,0,0,0.2);
+}
+
+.rounded{
+    border-radius: 50px;
+}
+
+.margin-x{
+    margin: 0 5px;
+}
+
+.end {
+   display: flex; 
+   justify-content: flex-end; 
+   align-items: flex-start;
+}
+
+.table-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+}

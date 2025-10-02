@@ -1,0 +1,21 @@
+<nz-modal [(nzVisible)]="isVisible" [nzWidth]="400" [nzTitle]="modalTitle" [nzOkText]="'Save'"
+    [nzOkDisabled]="modalForm.invalid" [nzOkDanger]="true" (nzOnCancel)="handleCancel()" (nzOnOk)="handleSave()"
+    [nzOkLoading]="isOkLoading">
+    <form nz-form [formGroup]="modalForm" *nzModalContent>
+        <nz-form-item>
+           <nz-form-label nzFor="name" nzRequired>Department Name</nz-form-label>
+            <nz-form-control>
+                <input nz-input id="name" formControlName="name" />
+                <div *ngIf="modalForm.get('name')?.invalid  && modalForm.get('name')?.touched" class="error">
+                    Department name is required.
+                </div>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label nzFor="description">Description</nz-form-label>
+            <nz-form-control>
+                <input nz-input id="description" formControlName="description" />
+            </nz-form-control>
+        </nz-form-item>
+    </form>
+</nz-modal>

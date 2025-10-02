@@ -1,0 +1,44 @@
+<br>
+<form [formGroup]="personForm" nz-form>
+    <nz-form-item>
+        <nz-form-label [nzSpan]="4" nzRequired>Name</nz-form-label>
+        <nz-form-control [nzSpan]="8" nzErrorTip="Please input your name!">
+            <input type="text" id="name" formControlName="name" nz-input placeholder="Enter your name." />
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-label [nzSpan]="4" nzRequired>Subject</nz-form-label>
+        <nz-form-control [nzSpan]="8" nzErrorTip="Please choose subject!">
+            <nz-checkbox-group [nzOptions]="options" formControlName="subject">
+            </nz-checkbox-group>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-label [nzSpan]="4" nzRequired>Gender</nz-form-label>
+        <nz-form-control [nzSpan]="8" nzErrorTip="Please choose your gender!">
+            <nz-radio-group formControlName="gender">
+                <label nz-radio nzValue="Male">Male</label>
+                <label nz-radio nzValue="Female">Female</label>
+            </nz-radio-group>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-label [nzSpan]="4" nzRequired>Address</nz-form-label>
+        <nz-form-control [nzSpan]="8" nzErrorTip="Please choose your address!">
+            <nz-select formControlName="province">
+                @for (p of provinceData; track p) {
+                <nz-option [nzValue]="p" [nzLabel]="p"></nz-option>
+                }
+            </nz-select>
+            <nz-select formControlName="city">
+                @for (c of cityData[personForm.get('province')?.value]; track c) {
+                <nz-option [nzValue]="c" [nzLabel]="c"></nz-option>
+                }
+            </nz-select>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <button nz-button (click)="submit()">Submit</button>
+    </nz-form-item>
+
+</form>

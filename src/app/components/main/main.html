@@ -1,0 +1,92 @@
+<div class="row">
+  <!-- Left Sidebar -->
+  <nav #leftSidebar class="col-4 bg-light border-end p-3 overflow-auto" style="width: 250px; max-height: 100vh;">
+    <div *ngFor="let category of categories" class="mb-3">
+      <h6 class="text-secondary">{{ category.name }}</h6>
+      <ul class="list-group list-group-flush">
+        <li *ngFor="let product of category.products" class="list-group-item"
+          [class.active]="activeProduct === product.id">
+          <a href="#" class="text-decoration-none" id="product.id" (click)="scrollTo($event, product.id)">{{
+            product.name }}</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Right Content -->
+  <div #rightContent class="col-8 flex-fill p-4 overflow-auto" style="max-height: 100vh;"
+    (scroll)="syncLeftRightScroll()">
+    <div *ngFor="let product of allProducts" [id]="product.id" class="mb-4 p-3 border rounded product">
+      <h4>{{ product.name }}</h4>
+      <!-- <p>{{ product.description }}</p> -->
+      @if (product.id == 'p1') {
+      <form [formGroup]="productForm" class="mb-4">
+        <input formControlName="category" placeholder="Category" class="form-control mb-2" />
+        <input formControlName="price" type="number" placeholder="Price" class="form-control mb-2" />
+        <button type="submit" class="btn btn-primary" (click)="addToCart(productForm)">Save Product</button>
+      </form>
+      }
+
+      @if (product.id == 'p2') {
+      <form [formGroup]="userForm" class="mb-4">
+        <input formControlName="username" placeholder="Username" class="form-control mb-2" />
+        <input formControlName="email" placeholder="Email" class="form-control mb-2" />
+        <button type="submit" class="btn btn-success" (click)="addToCart(userForm)">Save User</button>
+      </form>
+      }
+
+      @if (product.id == 'p3') {
+      <form [formGroup]="loginForm" class="mb-4">
+        <input formControlName="email" placeholder="Email" class="form-control mb-2" />
+        <input formControlName="password" type="password" placeholder="Password" class="form-control mb-2" />
+        <button type="submit" class="btn btn-warning" (click)="addToCart(loginForm)">Login</button>
+      </form>
+      }
+      @if (product.id == 'p4') {
+      <form [formGroup]="feedbackForm" class="mb-4">
+        <textarea formControlName="message" placeholder="Your message" class="form-control mb-2"></textarea>
+        <input formControlName="rating" type="number" placeholder="Rating (1-5)" class="form-control mb-2" />
+        <button type="submit" class="btn btn-info" (click)="addToCart(feedbackForm)">Submit Feedback</button>
+      </form>
+      }
+
+      @if (product.id == 'p5') {
+      <form [formGroup]="orderForm" class="mb-4">
+        <input formControlName="item" placeholder="Item" class="form-control mb-2" />
+        <input formControlName="quantity" type="number" placeholder="Quantity" class="form-control mb-2" />
+        <input formControlName="address" placeholder="Delivery Address" class="form-control mb-2" />
+        <button type="submit" class="btn btn-danger" (click)="addToCart(orderForm)">Place Order</button>
+      </form>
+      }
+
+      @if (product.id == 'p6') {
+      <form [formGroup]="registrationForm" class="mb-4">
+        <input formControlName="fullName" placeholder="Full Name" class="form-control mb-2" />
+        <input formControlName="email" placeholder="Email" class="form-control mb-2" />
+        <input formControlName="password" type="password" placeholder="Password" class="form-control mb-2" />
+        <input formControlName="confirmPassword" type="password" placeholder="Confirm Password"
+          class="form-control mb-2" />
+        <button type="submit" class="btn btn-primary" (click)="addToCart(registrationForm)">Register</button>
+      </form>
+      }
+
+      @if (product.id == 'p7') {
+      <form [formGroup]="contactForm" class="mb-4">
+        <input formControlName="name" placeholder="Your Name" class="form-control mb-2" />
+        <input formControlName="subject" placeholder="Subject" class="form-control mb-2" />
+        <textarea formControlName="message" placeholder="Message" class="form-control mb-2"></textarea>
+        <button type="submit" class="btn btn-success" (click)="addToCart(contactForm)">Send</button>
+      </form>
+      }
+
+      @if (product.id == 'p8') {
+      <form [formGroup]="paymentForm" class="mb-4">
+        <input formControlName="cardNumber" placeholder="Card Number" class="form-control mb-2" />
+        <input formControlName="expiryDate" placeholder="Expiry Date (MM/YY)" class="form-control mb-2" />
+        <input formControlName="cvv" placeholder="CVV" type="password" class="form-control mb-2" />
+        <button type="submit" class="btn btn-danger" (click)="addToCart(paymentForm)">Pay Now</button>
+      </form>
+      }
+    </div>
+  </div>
+</div>

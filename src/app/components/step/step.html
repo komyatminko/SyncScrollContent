@@ -1,0 +1,84 @@
+<div nz-row class="steps-form-layout" style="padding: 24px; background: #fff; border-radius: 8px;">
+  <!-- Left: Steps -->
+  <div nz-col nzSpan="6" class="steps-side">
+    <nz-steps [nzCurrent]="currentStep" nzDirection="vertical">
+      <nz-step nzTitle="Step 1" nzDescription="Basic Info"></nz-step>
+      <nz-step nzTitle="Step 2" nzDescription="Details"></nz-step>
+      <nz-step nzTitle="Step 3" nzDescription="Review"></nz-step>
+    </nz-steps>
+  </div>
+
+  <!-- Divider -->
+  <div nz-col nzSpan="1">
+    <nz-divider nzType="vertical" style="height: 100%;"></nz-divider>
+  </div>
+
+  <!-- Right: Forms -->
+  <div nz-col nzSpan="17" class="form-side">
+
+    <!-- Step 1 -->
+    <form *ngIf="currentStep === 0" [formGroup]="step1Form" nz-form>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="6" nzFor="name" nzRequired>Name</nz-form-label>
+        <nz-form-control [nzSpan]="14" nzErrorTip="Please enter your name">
+          <input nz-input formControlName="name" id="name" placeholder="Enter your name" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSpan]="6" nzFor="email" nzRequired>Email</nz-form-label>
+        <nz-form-control [nzSpan]="14" nzErrorTip="Please enter a valid email">
+          <input nz-input formControlName="email" id="email" placeholder="Enter your email" />
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+
+    <!-- Step 2 -->
+    <form *ngIf="currentStep === 1" [formGroup]="step2Form" nz-form>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="6" nzFor="address">Address</nz-form-label>
+        <nz-form-control [nzSpan]="14" nzErrorTip="Please enter your address">
+          <input nz-input formControlName="address" id="address" placeholder="Enter your address" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSpan]="6" nzFor="phone">Phone</nz-form-label>
+        <nz-form-control [nzSpan]="14" nzErrorTip="Please enter your phone number">
+          <input nz-input formControlName="phone" id="phone" placeholder="Enter your phone number" />
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+
+    <!-- Step 3 -->
+    <div *ngIf="currentStep === 2" class="review-step">
+      <h3>Review your details</h3>
+      <p><strong>Name:</strong> {{ step1Form.value.name }}</p>
+      <p><strong>Email:</strong> {{ step1Form.value.email }}</p>
+      <p><strong>Address:</strong> {{ step2Form.value.address }}</p>
+      <p><strong>Phone:</strong> {{ step2Form.value.phone }}</p>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <div class="form-navigation" style="margin-top: 24px; display: flex; justify-content: space-between;">
+      <button nz-button (click)="prevStep()" [disabled]="currentStep === 0">Previous</button>
+      <button
+        *ngIf="currentStep < 2"
+        nz-button
+        nzType="primary"
+        (click)="nextStep()"
+        [disabled]="!isStepValid(currentStep)">
+        Next
+      </button>
+      <button
+        *ngIf="currentStep === 2"
+        nz-button
+        nzType="primary"
+        nzDanger
+        (click)="submitForm()"
+      >
+        Submit
+      </button>
+    </div>
+  </div>
+</div>

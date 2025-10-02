@@ -1,0 +1,83 @@
+<!-- <nz-date-picker [(ngModel)]="date" (ngModelChange)="onChange($event)" nzAllowClear="false"></nz-date-picker>
+
+<br>
+<br> -->
+<div class="container">
+    <nz-card class="shadow rounded">
+        <!-- Header -->
+        <div nz-row>
+            <div nz-col nzSpan="12">
+                <div nz-row>
+                    <h5 nz-typography nz-col nzSpan="24">Department Setting</h5>
+                    <div nz-col nzSpan="24" nz-typography nzType="secondary">You can check the status of all departments
+                        here. </div>
+                </div>
+            </div>
+            <div nz-col nzSpan="12" class="end">
+                <button nz-button nzType="primary" class="rounded" nzDanger (click)="modalDialogBox.openForAdd()">
+                    Create new department
+                </button>
+            </div>
+        </div>
+
+        <!-- Select Department -->
+        <form action="" method="post" nzForm [formGroup]="searchForm">
+            <nz-form-item>
+                <nz-form-label nzSpan="24">Department Name</nz-form-label>
+                <nz-form-control nzSpan="24" nzErrorTip="Please select department name!">
+                    <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a department" name="department" [(ngModel)]="selectedDepartment"
+                        class="rounded-2" formControlName="keyword">
+                        @for (department of departments; track $index) {
+                        <nz-option [nzLabel]="department.name" [nzValue]="department.name">
+                        </nz-option>
+                        }
+                    </nz-select>
+                    <button nz-button nzType="primary" class="margin-x rounded" nzDanger (click)="search()">
+                        <nz-icon nzType="search" nzTheme="outline"></nz-icon>
+                        Search
+                    </button>
+                </nz-form-control>
+            </nz-form-item>
+        </form>
+
+        <!-- department Table  -->
+        <nz-table #dataList nzShowSizeChanger [nzData]="filteredDepartments" [nzFrontPagination]="true" [nzLoading]="loading"
+            [nzTotal]="departments.length" [nzPageSize]="pageSize" [nzPageIndex]="pageIndex" [nzShowPagination]="false"
+            (nzQueryParams)="onQueryParamsChange($event)" [nzScroll]="{ y: '50vh' }">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th nzShowSort [nzSortFn]="sortFnName">Department Name</th>
+                    <th nzShowSort [nzSortFn]="sortFnDesc">Description</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (department of dataList.data; track department) {
+                <tr>
+                    <td>{{ department.id }}</td>
+                    <td>{{ department.name }}</td>
+                    <td>{{ department.description }}</td>
+                    <td class="end">
+                        <button (click)="modalDialogBox.openForEdit(department)" nz-button class="margin-x">
+                            <nz-icon nzType="edit" nzTheme="outline" />
+                        </button>
+                        <button nz-button class="margin-x" (click)="deleteDepartment(department.id)">
+                            <nz-icon nzType="delete" nzTheme="outline" />
+                        </button>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </nz-table>
+        <div class="table-footer">
+            <div nz-typography nzType="secondary">Showing {{firstItemIndex}} to {{lastItemIndex}} of {{total}} entries
+            </div>
+            <nz-pagination [nzPageIndex]="pageIndex" [nzTotal]="total" nzShowSizeChanger [nzPageSize]="pageSize"
+                (nzPageSizeChange)="onPageSizeChange($event)"
+                (nzPageIndexChange)="onPageChange($event)"></nz-pagination>
+        </div>
+        <app-modal-dialog-box #modalDialogBox [type]="Type.DEPARTMENT" [modalTitle]="modalTitle"
+            [modalName]="modalName"></app-modal-dialog-box>
+    </nz-card>
+</div>
