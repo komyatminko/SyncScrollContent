@@ -1,0 +1,53 @@
+<div class="container">
+    <nz-card class="shadow">
+        <div nz-row>
+            <div nz-col nzSpan="20">
+                <div nz-row>
+                    <h5 nz-typography nz-col nzSpan="24">Leave Block Setting</h5>
+                    <div nz-col nzSpan="24" nz-typography nzType="secondary">You can set leave block dates and toggle
+                        settings like block status and country. </div>
+                </div>
+            </div>
+            <div nz-col nzSpan="4" class="end">
+                <div class="end" nz-typography nzType="danger">
+                    <div>
+                        <nz-icon nzType="edit" nzTheme="outline" class="margin-x" /> Edit
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <form nz-form [formGroup]="medClaimAmtSettingForm">
+            <div nz-row [nzGutter]="16">
+                <div nz-col [nzSpan]="12">
+                    <div class="med-claim-amt-sg">
+                        <div>
+                            <nz-form-label nzRequired>Max Medical Claim Amount for Singaporean Employee <span
+                                    nz-typography nzType="secondary">(SGG)</span></nz-form-label>
+                        </div>
+                        <div>
+                            <input nz-input type="number" formControlName="maxAmtSg"
+                                class="input" placeholder="Enter max medical claim amount for singaporean employee">
+                        </div>
+                    </div>
+                </div>
+                <div nz-col [nzSpan]="12">
+                    <div class="med-claim-amt-myan">
+                        <div>
+                            <nz-form-label nzRequired>Max Medical Claim Amount for Myanmar Employee <span nz-typography
+                                    nzType="secondary">(MMK)</span></nz-form-label>
+                        </div>
+                        <div>
+                            <input nz-input type="number" formControlName="maxAmtMyan"
+                                class="input" placeholder="Enter max medical claim amount for myanmar employee">
+                        </div>
+                    </div>
+                </div>
+                <div nz-col [nzSpan]="24" class="end margin-y">
+                    <button nz-button nzType="default" class="margin-x" (click)="reset()">Cancel</button>
+                    <button nz-button nzType="primary" nzDanger class="margin-x" (click)="update()">Update</button>
+                </div>
+            </div>
+        </form>
+    </nz-card>
+</div>

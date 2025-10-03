@@ -1,0 +1,83 @@
+<div class="container">
+    <nz-card class="shadow">
+        <div nz-row>
+            <div nz-col nzSpan="20">
+                <div nz-row>
+                    <h5 nz-typography nz-col nzSpan="24">Leave Block Setting</h5>
+                    <div nz-col nzSpan="24" nz-typography nzType="secondary">You can set leave block dates and toggle settings like block status and country. </div>
+                </div>
+            </div>
+            <div nz-col nzSpan="4" class="end">
+                <div class="end" nz-typography nzType="danger">
+                    <div>
+                        <nz-icon nzType="edit" nzTheme="outline" class="margin-x" /> Edit
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <form nz-form [formGroup]="lbSettingForm">
+            <div nz-row [nzGutter]="16">
+                <div nz-col [nzSpan]="12">
+                    <div class="lb-start-date">
+                        <div>
+                            <nz-form-label nzRequired>Leave Block Week From</nz-form-label>
+                        </div>
+                        <div>
+                            <nz-date-picker [nzDisabledDate]="disabledStartDate" nzFormat="yyyy-MM-dd"
+                                nzPlaceHolder="Select Date" formControlName="lbStartDate" class="input"></nz-date-picker>
+                        </div>
+                    </div>
+                    <div class="lb-enable">
+                        <div>
+                            <nz-form-label nzRequired>Enable Leave Block</nz-form-label>
+                        </div>
+                        <div>
+                            <nz-select nzPlaceHolder="Select Value" class="input" formControlName="lbEnable">
+                                <nz-option nzLabel="True" [nzValue]="true"></nz-option>
+                                <nz-option nzLabel="False" [nzValue]="false"></nz-option>
+                            </nz-select>
+                        </div>
+                    </div>
+                </div>
+                <div nz-col [nzSpan]="12">
+                    <div class="lb-end-date">
+                        <div>
+                            <nz-form-label nzRequired>Leave Block Week To</nz-form-label>
+                        </div>
+                        <div>
+                            <nz-date-picker #endDatePicker [nzDisabledDate]="disabledEndDate" nzFormat="yyyy-MM-dd"
+                                nzPlaceHolder="Select Date" formControlName="lbEndDate" class="input"></nz-date-picker>
+                        </div>
+                    </div>
+                    <div class="lb-country">
+                        <div>
+                            <nz-form-label nzRequired>Country</nz-form-label>
+                        </div>
+                        <div>
+                            <nz-select nzPlaceHolder="Select Value" class="input" formControlName="country">
+                                <nz-option nzLabel="Myanmar" nzValue="Myanmar"></nz-option>
+                                <nz-option nzLabel="Singapore" nzValue="Singapore"></nz-option>
+                                <nz-option nzLabel="Both" nzValue="Both"></nz-option>
+                            </nz-select>
+                        </div>
+                    </div>
+                </div>
+                <div nz-col [nzSpan]="24">
+                    <div class="lb-msg">
+                        <div>
+                            <nz-form-label nzRequired>Message</nz-form-label>
+                        </div>
+                        <div>
+                            <textarea rows="4" nz-input class="textarea-input" formControlName="message" placeholder="Enter message"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div nz-col [nzSpan]="24" class="end margin-y">
+                    <button nz-button nzType="default" class="margin-x" (click)="reset()">Cancel</button>
+                    <button nz-button nzType="primary"nzDanger class="margin-x" (click)="update()">Update</button>
+                </div>
+            </div>
+        </form>
+    </nz-card>
+</div>

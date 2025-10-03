@@ -1,0 +1,73 @@
+<div class="container">
+    <nz-card class="shadow">
+        <div nz-row>
+            <div nz-col nzSpan="20">
+                <div nz-row>
+                    <h5 nz-typography nz-col nzSpan="24">Email Notification Setting</h5>
+                    <div nz-col nzSpan="24" nz-typography nzType="secondary">You can set the notification for email
+                        within specific time. </div>
+                </div>
+            </div>
+            <div nz-col nzSpan="4" class="end">
+                <div class="end" nz-typography nzType="danger">
+                    <div>
+                        <nz-icon nzType="edit" nzTheme="outline" class="margin-x" /> Edit
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <form nz-form [formGroup]="emailNotiSettingForm">
+            <div nz-row [nzGutter]="16">
+                <div nz-col [nzSpan]="12">
+                    <div class="email-noti-time">
+                        <div>
+                            <nz-form-label nzRequired>Notification time<span nz-typography
+                                nzType="secondary">(Day)</span></nz-form-label>
+                        </div>
+                        <div>
+                            <input nz-input type="text" formControlName="emailNotiTime" class="input"
+                                placeholder="Enter notification time">
+                        </div>
+                    </div>
+                    <div class="email-certi-time">
+                        <div>
+                            <nz-form-label nzRequired>MC Certification Time<span nz-typography
+                                nzType="secondary">(Day)</span></nz-form-label>
+                        </div>
+                        <div>
+                            <input nz-input type="text" formControlName="emailCertiTime" class="input"
+                                placeholder="Enter certification time">
+                        </div>
+                    </div>
+                </div>
+                <div nz-col [nzSpan]="12">
+                    <div class="email-noti-interval">
+                        <div>
+                            <nz-form-label nzRequired>Notification Interval<span nz-typography
+                                    nzType="secondary">(Day)</span></nz-form-label>
+                        </div>
+                        <div>
+                            <input nz-input type="text" formControlName="emailNotiInterval" class="input"
+                                placeholder="Enter notification interval">
+                        </div>
+                    </div>
+                    <div class="email-certi-interval">
+                        <div>
+                            <nz-form-label nzRequired>MC Certification Interval<span nz-typography
+                                    nzType="secondary">(Day)</span></nz-form-label>
+                        </div>
+                        <div>
+                            <input nz-input type="text" formControlName="emailCertiInterval" class="input"
+                                placeholder="Enter MC certification interval">
+                        </div>
+                    </div>
+                </div>
+                <div nz-col [nzSpan]="24" class="end margin-y">
+                    <button nz-button nzType="default" class="margin-x" (click)="reset()">Cancel</button>
+                    <button nz-button nzType="primary" nzDanger class="margin-x" (click)="update()">Update</button>
+                </div>
+            </div>
+        </form>
+    </nz-card>
+</div>

@@ -1,0 +1,28 @@
+.container {
+    margin: 30px 50px;
+}
+
+.shadow {
+    box-shadow: 0 4px 3px rgba(0,0,0,0.2);
+}
+
+.end {
+   display: flex; 
+   justify-content: flex-end; 
+   align-items: flex-start;
+}
+
+.input{
+    width: 100%;
+}
+
+.margin-x{
+    margin: 0 5px;
+}
+
+.margin-y{
+    margin: 10px 0;
+}
+
+
+
