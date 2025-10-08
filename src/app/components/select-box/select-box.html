@@ -1,0 +1,9 @@
+<div style="width: 250px;">
+    <input nz-input [(ngModel)]="selectedValue" [nzAutocomplete]="auto" placeholder="Select or edit..." />
+
+    <nz-autocomplete #auto>
+        <nz-auto-option *ngFor="let item of options" [nzValue]="item">
+            {{ item }}
+        </nz-auto-option>
+    </nz-autocomplete>
+</div>

@@ -13,6 +13,8 @@ import { PendingReminderSetting } from './components/pending-reminder-setting/pe
 import { ApprovedReminderSetting } from './components/approved-reminder-setting/approved-reminder-setting';
 import { LeaveApplicationSetting } from './components/leave-application-setting/leave-application-setting';
 import { ProgressBar } from './components/progress-bar/progress-bar';
+import { PieChart } from './components/pie-chart/pie-chart';
+import { SelectBox } from './components/select-box/select-box';
 export const routes: Routes = [
     {
         path:"main",
@@ -69,8 +71,17 @@ export const routes: Routes = [
     {
         path: 'leave-application-setting',
         component: LeaveApplicationSetting
-    },{
+    },
+    {
         path: 'progress-bar',
         component: ProgressBar
+    },
+    {
+        path: 'pie-chart',
+        component: PieChart
+    },
+    {
+        path: 'select',
+        component: SelectBox
     }
 ];
