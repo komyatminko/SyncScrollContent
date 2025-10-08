@@ -1,0 +1,37 @@
+<div class="container">
+    <nz-card class="shadow">
+        <!-- header -->
+        <div nz-row>
+            <div nz-col nzSpan="12">
+                <h5 nz-typography nz-col nzSpan="24">Leave Taken Summary</h5>
+            </div>
+            <div nz-col nzSpan="12">
+                <div class="end" nz-typography nzType="danger">
+                    <div>
+                        <nz-icon nzType="info-circle" nzTheme="outline" class="margin-x" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- chart -->
+        <div class="chart">
+            <div nz-row class="center">
+                <div nz-col [nzSpan]="8">
+                    <canvas #doughnutCanvas></canvas>
+                </div>
+                <div nz-col [nzSpan]="8">
+                    <div *ngFor="let label of labels; let i = index" class="label">
+                        <!-- Colored box + label -->
+                        <div class="margin-x" [style.background-color]="bgColor[i]" style="width: 8px; height: 8px;">
+                        </div>
+                        <div>
+                            <span>{{ label }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </nz-card>
+</div>

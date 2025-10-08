@@ -33,13 +33,6 @@ export class PieChart {
         cutout: '70%', // <-- controls doughnut thickness (default ~50%)
         responsive: true,
         plugins: {
-          title: {
-            display: true,            // show the title
-            text: 'My Doughnut Chart', // the header text
-            font: { size: 18 },       // optional font size
-            color: '#333',            // optional color
-            padding: { top: 10, bottom: 30 } // optional spacing
-          },
           legend: {
             position: 'left',
             labels: {
@@ -53,6 +46,7 @@ export class PieChart {
           }
         },
         onClick: (event: ChartEvent, activeElements: ActiveElement[]) => {
+        
           if (activeElements.length > 0) {
             const datasetIndex = activeElements[0].datasetIndex;
             const dataIndex = activeElements[0].index;

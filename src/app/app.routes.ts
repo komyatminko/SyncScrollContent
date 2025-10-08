@@ -15,6 +15,7 @@ import { LeaveApplicationSetting } from './components/leave-application-setting/
 import { ProgressBar } from './components/progress-bar/progress-bar';
 import { PieChart } from './components/pie-chart/pie-chart';
 import { SelectBox } from './components/select-box/select-box';
+import { LeaveTakenSummary } from './components/leave-taken-summary/leave-taken-summary';
 export const routes: Routes = [
     {
         path:"main",
@@ -83,5 +84,8 @@ export const routes: Routes = [
     {
         path: 'select',
         component: SelectBox
+    },{
+        path: 'leave-taken-summary',
+        component: LeaveTakenSummary
     }
 ];
