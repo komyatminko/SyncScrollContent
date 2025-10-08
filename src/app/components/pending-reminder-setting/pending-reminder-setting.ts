@@ -46,7 +46,7 @@ export class PendingReminderSetting {
     })
   }
 
-  toggleMtnEnable(controlName: string) {
+  toggleSwitch(controlName: string) {
     const control = this.getControl(controlName);
     if (control) {
       control.setValue(!control.value);

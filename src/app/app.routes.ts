@@ -12,6 +12,7 @@ import { EmailNotificationSetting } from './components/email-notification-settin
 import { PendingReminderSetting } from './components/pending-reminder-setting/pending-reminder-setting';
 import { ApprovedReminderSetting } from './components/approved-reminder-setting/approved-reminder-setting';
 import { LeaveApplicationSetting } from './components/leave-application-setting/leave-application-setting';
+import { ProgressBar } from './components/progress-bar/progress-bar';
 export const routes: Routes = [
     {
         path:"main",
@@ -68,5 +69,8 @@ export const routes: Routes = [
     {
         path: 'leave-application-setting',
         component: LeaveApplicationSetting
+    },{
+        path: 'progress-bar',
+        component: ProgressBar
     }
 ];

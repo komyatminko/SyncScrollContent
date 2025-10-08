@@ -1,0 +1,22 @@
+.shadow {
+    box-shadow: 0 1px 1px rgba(0,0,0,0.2);
+}
+
+.rounded{
+    border-radius: 50px;
+}
+
+.margin{
+    margin: 10px;
+}
+
+.center {
+   display: flex; 
+   /* justify-content: center;  */
+   align-items: center;
+}
+
+/* Target the circle inner text when status is exception */
+::ng-deep .ant-progress-circle .ant-progress-text {
+  color: black !important;
+}

@@ -56,7 +56,7 @@
                             <nz-form-label nzRequired>Enable Email Schedule</nz-form-label>
                         </div>
                         <div>
-                            <nz-switch [nzControl]="true" (click)="toggleMtnEnable('emailScheduleEnable')"
+                            <nz-switch [nzControl]="true" (click)="toggleSwitch('emailScheduleEnable')"
                                 formControlName="emailScheduleEnable"></nz-switch>
                         </div>
                     </div>
@@ -66,21 +66,38 @@
                         <div>
                             <nz-form-label nzRequired>Email Sending Time</nz-form-label>
                         </div>
+                        <!-- <div>
+                            <nz-select nzPlaceHolder="Select Value" [nzMode]="isEditable ? 'tags' : 'default'" (ngModelChange)="onSelectChange($event)" class="input" formControlName="emailSendingTime">
+                                <nz-option nzLabel="09:10 AM" nzValue="09:10 AM"></nz-option>
+                                <nz-option nzLabel="09:40 AM" nzValue="09:40 AM"></nz-option>
+                                <nz-option nzLabel="10:00 AM" nzValue="10:00 AM"></nz-option>
+                                <nz-option nzLabel="10:30 AM" nzValue="10:30 AM"></nz-option>
+                                <nz-option nzLabel="custom" nzValue="custom"></nz-option>
+                            </nz-select>
+                        </div> -->
+                        @if (!isEditable) {
                         <div>
-                            <nz-select nzPlaceHolder="Select Value" class="input" formControlName="emailSendingTime">
+                            <nz-select formControlName="emailSendingTime" (ngModelChange)="onSelectChange($event)"
+                                nzPlaceHolder="Select Value" class="input">
                                 <nz-option nzLabel="09:10 AM" nzValue="09:10 AM"></nz-option>
                                 <nz-option nzLabel="09:40 AM" nzValue="09:40 AM"></nz-option>
                                 <nz-option nzLabel="10:00 AM" nzValue="10:00 AM"></nz-option>
                                 <nz-option nzLabel="10:30 AM" nzValue="10:30 AM"></nz-option>
                             </nz-select>
                         </div>
+                        }
+                        @else {
+                        <div>
+                            <input nz-input formControlName="emailSendingTime" />
+                        </div>
+                        }
                     </div>
                     <div class="enable-viber-schedule">
                         <div>
                             <nz-form-label nzRequired>Enable Viber Schedule</nz-form-label>
                         </div>
                         <div>
-                            <nz-switch [nzControl]="true" (click)="toggleMtnEnable('viberScheduleEnable')"
+                            <nz-switch [nzControl]="true" (click)="toggleSwitch('viberScheduleEnable')"
                                 formControlName="viberScheduleEnable"></nz-switch>
                         </div>
                     </div>

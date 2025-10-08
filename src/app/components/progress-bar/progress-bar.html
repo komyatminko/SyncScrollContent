@@ -1,0 +1,17 @@
+<nz-card class="shadow rounded margin">
+    <div nz-row>
+        <div nz-col [nzSpan]="6">
+            <nz-progress nzStatus="exception" [nzPercent]="percent" nzType="circle" [nzFormat]="formatOne"></nz-progress>
+        </div>
+        <div nz-col [nzSpan]="18" class="center">
+            <div nz-row>
+                <div nz-col [nzSpan]="24">
+                    <h4><b>{{header}}</b></h4>
+                </div>
+                <div nz-col [nzSpan]="24">
+                    {{body}}
+                </div>
+            </div>
+        </div>
+    </div>
+</nz-card>

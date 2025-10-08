@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { NzButtonModule } from 'ng-zorro-antd/button';
@@ -23,13 +24,15 @@ import { NzTypographyModule } from 'ng-zorro-antd/typography';
     NzInputModule,
     NzSwitchModule,
     NzFormModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CommonModule
   ],
   templateUrl: './approved-reminder-setting.html',
   styleUrl: './approved-reminder-setting.css'
 })
 export class ApprovedReminderSetting {
 
+  isEditable = false;
   approvedReminderSettingForm!: FormGroup;
 
   constructor(private fb: FormBuilder, private i18n: NzI18nService) {
@@ -44,11 +47,20 @@ export class ApprovedReminderSetting {
     })
   }
 
-  toggleMtnEnable(controlName: string) {
+  // ngOnInit(){
+  //   console.log('isEditable', this.isEditable);
+  // }
+
+  toggleSwitch(controlName: string) {
     const control = this.getControl(controlName);
     if (control) {
       control.setValue(!control.value);
     }
+  }
+
+  onSelectChange(value: string) {
+      this.isEditable = true;
+      console.log('isEditable', this.isEditable);
   }
 
   getControl(controlName: string) {
