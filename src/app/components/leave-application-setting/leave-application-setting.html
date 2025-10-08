@@ -1,0 +1,87 @@
+<div class="container">
+    <nz-card class="shadow">
+
+        <!-- header -->
+        <div nz-row>
+            <div nz-col nzSpan="20">
+                <div nz-row>
+                    <h5 nz-typography nz-col nzSpan="24">Leave Application Setting</h5>
+                    <div nz-col nzSpan="24" nz-typography nzType="secondary">You can configure sender and
+                        receiver/approver departments used in leave transactions. </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- form -->
+        <form nz-form [formGroup]="leaveAppSettingForm">
+            <div nz-row [nzGutter]="16">
+                <div nz-col [nzSpan]="12">
+                    <div class="sender">
+                        <div>
+                            <nz-form-label nzRequired>Sender Department</nz-form-label>
+                        </div>
+                        <div>
+                            <nz-select nzPlaceHolder="Please Select" class="input" formControlName="senderDepart">
+                                @for (department of departments; track $index) {
+                                <nz-option [nzLabel]="department" [nzValue]="department"></nz-option>
+                                }
+                            </nz-select>
+                        </div>
+                    </div>
+                </div>
+                <div nz-col [nzSpan]="12">
+                    <div class="receiver">
+                        <div>
+                            <nz-form-label nzRequired>Receive/Approve Department</nz-form-label>
+                        </div>
+                        <div>
+                            <nz-select nzPlaceHolder="Please Select" class="input" formControlName="receiverDepart">
+                                @for (department of departments; track $index) {
+                                <nz-option [nzLabel]="department" [nzValue]="department"></nz-option>
+                                }
+                            </nz-select>
+                        </div>
+                    </div>
+                </div>
+                <div nz-col [nzSpan]="24" class="end margin-y">
+                    <button nz-button nzType="primary" nzDanger class="margin-x" (click)="save()">Save</button>
+                </div>
+            </div>
+        </form>
+
+        <!-- data list table -->
+        <nz-table #dataList nzShowSizeChanger [nzData]="data" [nzFrontPagination]="true" [nzLoading]="loading"
+            [nzTotal]="departments.length" [nzPageSize]="pageSize" [nzPageIndex]="pageIndex" [nzShowPagination]="false"
+            (nzQueryParams)="onQueryParamsChange($event)" [nzScroll]="{ y: '50vh' }">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th nzShowSort [nzSortFn]="sortFnSender">Sender Department</th>
+                    <th nzShowSort [nzSortFn]="sortFnReceiver">Receive/Approve Department</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (result of dataList.data; track result) {
+                <tr>
+                    <td>{{ result.id}}</td>
+                    <td>{{ result.sender }}</td>
+                    <td>{{ result.receiver }}</td>
+                    <td class="end">
+                        <button nz-button class="margin-x" (click)="deleteDepartment(result.id)">
+                            <nz-icon nzType="delete" nzTheme="outline" />
+                        </button>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </nz-table>
+        <div class="table-footer">
+            <div nz-typography nzType="secondary">Showing {{firstItemIndex}} to {{lastItemIndex}} of {{total}} entries
+            </div>
+            <nz-pagination [nzPageIndex]="pageIndex" [nzTotal]="total" nzShowSizeChanger [nzPageSize]="pageSize"
+                [nzPageSizeOptions]="[5, 10, 15, 20, 30]" (nzPageSizeChange)="onPageSizeChange($event)"
+                (nzPageIndexChange)="onPageChange($event)"></nz-pagination>
+        </div>
+    </nz-card>
+</div>

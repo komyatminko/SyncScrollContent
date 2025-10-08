@@ -2,20 +2,30 @@
     [nzOkDisabled]="modalForm.invalid" [nzOkDanger]="true" (nzOnCancel)="handleCancel()" (nzOnOk)="handleSave()"
     [nzOkLoading]="isOkLoading">
     <form nz-form [formGroup]="modalForm" *nzModalContent>
-        <nz-form-item>
-           <nz-form-label nzFor="name" nzRequired>Department Name</nz-form-label>
-            <nz-form-control>
-                <input nz-input id="name" formControlName="name" />
-                <div *ngIf="modalForm.get('name')?.invalid  && modalForm.get('name')?.touched" class="error">
-                    Department name is required.
+        <div nz-row>
+            <div nz-col [nzSpan]="24" class="margin-y">
+                <div class="lb-start-date">
+                    <div>
+                        <nz-form-label nzFor="name" nzRequired>{{modalName}}</nz-form-label>
+                    </div>
+                    <div>
+                        <input nz-input id="name" formControlName="name" class="input" placeholder="Enter name"/>
+                        @if (getControl('name')?.invalid && (getControl('name')?.touched || getControl('name')?.dirty)) {
+                            <span nz-typography nzType="danger">{{modalName.split(" ")[0]}} name is required.</span>
+                        }
+                    </div>
                 </div>
-            </nz-form-control>
-        </nz-form-item>
-        <nz-form-item>
-            <nz-form-label nzFor="description">Description</nz-form-label>
-            <nz-form-control>
-                <input nz-input id="description" formControlName="description" />
-            </nz-form-control>
-        </nz-form-item>
+            </div>
+            <div nz-col [nzSpan]="24" class="margin-y">
+                <div class="lb-end-date">
+                    <div>
+                        <nz-form-label nzFor="description">Description</nz-form-label>
+                    </div>
+                    <div>
+                        <textarea rows="4" nz-input id="description" formControlName="description" class="input" placeholder="Enter description"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
     </form>
 </nz-modal>

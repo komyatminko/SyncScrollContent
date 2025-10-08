@@ -48,20 +48,20 @@ export class LeaveBlockSetting {
   normalizeDate = (d: Date) => new Date(d.getFullYear(), d.getMonth(), d.getDate());
 
   disabledStartDate = (startValue: Date): boolean => {
-    if (!startValue || !this.getControl('lbEndDate')) return false;
+    if (!startValue || !this.getControl('lbEndDate')?.value) return false;
 
-    return this.normalizeDate(startValue).getTime() > this.getControl('lbEndDate').getTime();
+    return this.normalizeDate(startValue).getTime() > this.getControl('lbEndDate')?.value.getTime();
   };
 
   disabledEndDate = (endValue: Date): boolean => {
-    if (!endValue || !this.getControl('lbStartDate')) return false;
+    if (!endValue || !this.getControl('lbStartDate')?.value) return false;
 
-    return this.normalizeDate(endValue).getTime() < this.normalizeDate(this.getControl('lbStartDate')).getTime();
+    return this.normalizeDate(endValue).getTime() < this.normalizeDate(this.getControl('lbStartDate')?.value).getTime();
   };
   //////////////////////////////
 
   getControl(controlName: string) {
-    return this.lbSettingForm.get(controlName)?.value;
+    return this.lbSettingForm.get(controlName);
   }
 
   update(){

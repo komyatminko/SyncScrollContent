@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzCardModule } from 'ng-zorro-antd/card';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { en_US, NzI18nService } from 'ng-zorro-antd/i18n';
@@ -10,10 +11,8 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzSwitchModule } from 'ng-zorro-antd/switch';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
-
-
 @Component({
-  selector: 'app-pending-reminder-setting',
+  selector: 'app-approved-reminder-setting',
   imports: [
     NzCardModule,
     NzIconModule,
@@ -26,18 +25,17 @@ import { NzTypographyModule } from 'ng-zorro-antd/typography';
     NzFormModule,
     ReactiveFormsModule
   ],
-  templateUrl: './pending-reminder-setting.html',
-  styleUrl: './pending-reminder-setting.css'
+  templateUrl: './approved-reminder-setting.html',
+  styleUrl: './approved-reminder-setting.css'
 })
-export class PendingReminderSetting {
+export class ApprovedReminderSetting {
 
-  pendingReminderSettingForm!: FormGroup;
+  approvedReminderSettingForm!: FormGroup;
 
   constructor(private fb: FormBuilder, private i18n: NzI18nService) {
     this.i18n.setLocale(en_US);
 
-    this.pendingReminderSettingForm = this.fb.group({
-      role: ['', Validators.required],
+    this.approvedReminderSettingForm = this.fb.group({
       tranWeek: ['', Validators.required],
       emailSendingDay: ['', Validators.required],
       emailSendingTime: ['', Validators.required],
@@ -54,15 +52,14 @@ export class PendingReminderSetting {
   }
 
   getControl(controlName: string) {
-    return this.pendingReminderSettingForm.get(controlName);
+    return this.approvedReminderSettingForm.get(controlName);
   }
 
   update() {
-    console.log('updated value: ', this.pendingReminderSettingForm.value);
+    console.log('updated value: ', this.approvedReminderSettingForm.value);
   }
 
   reset() {
-    this.pendingReminderSettingForm.reset();
+    this.approvedReminderSettingForm.reset();
   }
-
 }

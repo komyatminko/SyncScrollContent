@@ -3,8 +3,8 @@
         <div nz-row>
             <div nz-col nzSpan="20">
                 <div nz-row>
-                    <h5 nz-typography nz-col nzSpan="24">Pending Reminder Setting</h5>
-                    <div nz-col nzSpan="24" nz-typography nzType="secondary">You can set pending reminder schedule
+                    <h5 nz-typography nz-col nzSpan="24">Approved Reminder Setting</h5>
+                    <div nz-col nzSpan="24" nz-typography nzType="secondary">You can set approved reminder schedule
                         according to role. </div>
                 </div>
             </div>
@@ -17,33 +17,30 @@
             </div>
         </div>
 
-        <form nz-form [formGroup]="pendingReminderSettingForm">
+        <form nz-form [formGroup]="approvedReminderSettingForm">
             <div nz-row [nzGutter]="16">
-                <div nz-col [nzSpan]="12">
-                    <div class="role">
+                <div nz-col [nzSpan]="24">
+                    <div class="tran-week">
                         <div>
-                            <nz-form-label nzRequired>Role</nz-form-label>
+                            <nz-form-label nzRequired>Transaction Week</nz-form-label>
                         </div>
                         <div>
-                            <nz-select nzPlaceHolder="Please Select" class="input" formControlName="role">
-                                <nz-option nzLabel="Admin" nzValue="Admin"></nz-option>
-                                <nz-option nzLabel="Head" nzValue="Head"></nz-option>
-                                <nz-option nzLabel="Branch Manager" nzValue="Branch Manager"></nz-option>
-                                <nz-option nzLabel="Engineer" nzValue="Engineer"></nz-option>
-                                <nz-option nzLabel="Developer" nzValue="Developer"></nz-option>
-                                <nz-option nzLabel="Sales" nzValue="Sales"></nz-option>
-                                <nz-option nzLabel="Project Consultant" nzValue="Project Consultant"></nz-option>
-                                <nz-option nzLabel="Team Leader" nzValue="Team Leader"></nz-option>
-                                <nz-option nzLabel="Intership" nzValue="Intership"></nz-option>
+                            <nz-select nzPlaceHolder="Please Select" class="input" formControlName="tranWeek">
+                                <nz-option nzLabel="1 week" [nzValue]="'1'"></nz-option>
+                                <nz-option nzLabel="2 weeks" [nzValue]="'2'"></nz-option>
+                                <nz-option nzLabel="3 weeks" [nzValue]="'3'"></nz-option>
+                                <nz-option nzLabel="4 weeks" [nzValue]="'4'"></nz-option>
                             </nz-select>
                         </div>
                     </div>
+                </div>
+                <div nz-col [nzSpan]="12">
                     <div class="email-sending-day">
                         <div>
                             <nz-form-label nzRequired>Email Sending Day</nz-form-label>
                         </div>
                         <div>
-                            <nz-select nzPlaceHolder="Please Select" class="input" formControlName="emailSendingDay">
+                            <nz-select nzPlaceHolder="Select Value" class="input" formControlName="emailSendingDay">
                                 <nz-option nzLabel="Sunday" nzValue="Sunday"></nz-option>
                                 <nz-option nzLabel="Monday" nzValue="Monday"></nz-option>
                                 <nz-option nzLabel="Tuesday" nzValue="Tuesday"></nz-option>
@@ -65,19 +62,6 @@
                     </div>
                 </div>
                 <div nz-col [nzSpan]="12">
-                    <div class="tran-week">
-                        <div>
-                            <nz-form-label nzRequired>Transaction Week</nz-form-label>
-                        </div>
-                        <div>
-                            <nz-select nzPlaceHolder="Select Value" class="input" formControlName="tranWeek">
-                                <nz-option nzLabel="1 week" [nzValue]="'1'"></nz-option>
-                                <nz-option nzLabel="2 weeks" [nzValue]="'2'"></nz-option>
-                                <nz-option nzLabel="3 weeks" [nzValue]="'3'"></nz-option>
-                                <nz-option nzLabel="4 weeks" [nzValue]="'4'"></nz-option>
-                            </nz-select>
-                        </div>
-                    </div>
                     <div class="email-sending-time">
                         <div>
                             <nz-form-label nzRequired>Email Sending Time</nz-form-label>

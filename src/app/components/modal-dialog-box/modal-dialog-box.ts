@@ -5,16 +5,21 @@ import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { DepartmentModel } from '../../models/department';
 import { Type } from '../../enums/type.enum';
-import { NzTypographyComponent } from "ng-zorro-antd/typography";
+import { NzTypographyModule } from "ng-zorro-antd/typography";
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzInputModule } from 'ng-zorro-antd/input';
 
 @Component({
   selector: 'app-modal-dialog-box',
   imports: [
     NzModalModule,
     NzGridModule,
+    NzFormModule,
+    NzInputModule,
     ReactiveFormsModule,
     CommonModule,
-  ],
+    NzTypographyModule
+],
   templateUrl: './modal-dialog-box.html',
   styleUrl: './modal-dialog-box.css'
 })
@@ -98,6 +103,10 @@ export class ModalDialogBox {
 
   handleCancel(): void {
     this.isVisible = false;
+  }
+
+  getControl(controlName: string) {
+    return this.modalForm.get(controlName);
   }
 
 }

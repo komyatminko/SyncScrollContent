@@ -30,3 +30,7 @@ nz-select {
     align-items: center;
     margin-top: 30px;
 }
+
+.dataTable{
+    width: 100%;
+}

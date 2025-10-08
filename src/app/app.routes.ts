@@ -10,6 +10,8 @@ import { PasswordSetting } from './components/password-setting/password-setting'
 import { EmailSetting } from './components/email-setting/email-setting';
 import { EmailNotificationSetting } from './components/email-notification-setting/email-notification-setting';
 import { PendingReminderSetting } from './components/pending-reminder-setting/pending-reminder-setting';
+import { ApprovedReminderSetting } from './components/approved-reminder-setting/approved-reminder-setting';
+import { LeaveApplicationSetting } from './components/leave-application-setting/leave-application-setting';
 export const routes: Routes = [
     {
         path:"main",
@@ -58,5 +60,13 @@ export const routes: Routes = [
     {
         path: "pending-reminder-setting",
         component: PendingReminderSetting
+    },
+    {
+        path: "approved-reminder-setting",
+        component: ApprovedReminderSetting
+    },
+    {
+        path: 'leave-application-setting',
+        component: LeaveApplicationSetting
     }
 ];
