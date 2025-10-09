@@ -47,9 +47,12 @@ export class LeaveTakenSummary {
       type: 'doughnut',
       data: data,
       options: {
-        cutout: '70%', // <-- controls doughnut thickness (default ~50%)
+        cutout: '65%', // <-- controls doughnut thickness (default ~50%)
         responsive: true,
         plugins: {
+          legend: {
+            display: false // hide legend
+          },
           tooltip: {
             enabled: true,
           }

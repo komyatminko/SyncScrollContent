@@ -1,0 +1,66 @@
+<div class="container">
+    <nz-card class="shadow">
+        <!-- header -->
+        <div nz-row>
+            <div nz-col nzSpan="12">
+                <h5 nz-typography nz-col nzSpan="24">Employee</h5>
+            </div>
+            <div nz-col nzSpan="12">
+                <div class="end" nz-typography>
+                    <div>
+                        <nz-icon nzType="info-circle" nzTheme="outline" class="margin-x" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- tabs(All, Myanmar, Singapore) -->
+        <div nz-row class="margin-y">
+            <div nz-col [nzSpan]="16">
+                
+                <button nz-button [nzType]="employeeType === 'all' ? 'primary' : 'default'"  class="margin-x" (click)="filterByEmpType('all')">
+                    All
+                </button>
+                <button nz-button [nzType]="employeeType === 'myanmar' ? 'primary' : 'default'" class="margin-x" (click)="filterByEmpType('myanmar')">
+                    Myanmar
+                </button>
+                <button nz-button [nzType]="employeeType === 'singapore' ? 'primary' : 'default'" class="margin-x" (click)="filterByEmpType('singapore')">
+                    Singapore
+                </button>
+            </div>
+            <div nz-col [nzSpan]="8" class="end">
+                <span nz-typography nzType="secondary">Total - {{filterEmps.length}}</span>
+            </div>
+        </div>
+
+        <!-- employee lists -->
+        @for(emp of filterEmps; track emp){
+        <div nz-row>
+            <!-- image -->
+            <div nz-col [nzSpan]="6">
+
+            </div>
+            <!-- name and position -->
+            <div nz-col [nzSpan]="8">
+                <div>
+                    {{emp.name}}
+                </div>
+                <div>
+                    <small nz-typography nzType="secondary">{{emp.position}}</small>
+                </div>
+            </div>
+            <!-- department -->
+            <div nz-col [nzSpan]="6" class="end">
+                {{emp.department}}
+            </div>
+            <!-- country -->
+            <div nz-col [nzSpan]="4" class="end">
+                <img [src]="'assets/flags/' + emp.country.toLowerCase() + '.svg'" width="30" height="auto" alt="Flag">
+            </div>
+        </div>
+        <nz-divider></nz-divider>
+        }
+
+
+    </nz-card>
+</div>

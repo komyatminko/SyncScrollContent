@@ -1,0 +1,25 @@
+.shadow {
+    box-shadow: 0 4px 3px rgba(0,0,0,0.2);
+}
+
+.container {
+    margin: 30px 50px;
+}
+
+.end {
+   display: flex; 
+   justify-content: flex-end; 
+   align-items: flex-start;
+}
+
+.margin-x{
+    margin: 0 5px;
+}
+
+.margin-y{
+    margin: 10px 0 20px 0;
+}
+
+.ant-divider-horizontal{
+    margin: 10px 0 !important;
+}
